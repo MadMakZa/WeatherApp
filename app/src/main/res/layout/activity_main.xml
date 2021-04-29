@@ -11,9 +11,9 @@
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/logo"
         android:layout_marginTop="50sp"
+        android:fontFamily="sans-serif"
+        android:text="@string/logo"
         android:textAlignment="center"
         android:textColor="@color/textColor"
         android:textSize="30sp" />
