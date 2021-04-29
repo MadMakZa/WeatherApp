@@ -33,15 +33,22 @@ class MainActivity : AppCompatActivity() {
             if(user_field?.text?.toString()?.trim()?.equals("")!!)
                 Toast.makeText(this, "Введите город", Toast.LENGTH_LONG).show()
             else{
-                var city: String = user_field?.text.toString()
-                var key: String = "2f9d86b6f0efbadae9d47297c65b5e0b"
-                var url: String = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$key&units=metric&lang=ru"
+                val city: String = user_field?.text.toString()
+                val key: String = "2f9d86b6f0efbadae9d47297c65b5e0b"
+                val url: String = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$key"
 
 
                 doAsync {
-                    var apiResponse = URL(url).readText()
+                    val apiResponse = URL(url).readText()
                     Log.d("INFO", apiResponse)
-                    JSONObject(apiResponse)
+                    //работа с массивоми данных
+                    val weather = JSONObject(apiResponse).getJSONArray("weather") //вытягиваем значение по ключу
+                    val desc = weather.getJSONObject(0).getString("description") //вытягиваем из вытинутого значение по ключу дескрипшн
+
+                    val main = JSONObject(apiResponse).getJSONObject("main")
+                    val temp = main.getString("temp")
+
+                    result_info?.text = "Температура: $temp\n$desc"
                 }
             }
         }
