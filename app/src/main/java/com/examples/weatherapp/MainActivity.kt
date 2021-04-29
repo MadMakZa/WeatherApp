@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             else{
                 val city: String = user_field?.text.toString()
                 val key: String = "2f9d86b6f0efbadae9d47297c65b5e0b"
-                val url: String = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$key"
+                val url: String = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$key&units=metric"
 
 
                 doAsync {
